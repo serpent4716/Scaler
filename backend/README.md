@@ -1,3 +1,14 @@
+title: Supply Chain Disruption Dispatcher
+emoji: 🚛
+colorFrom: blue
+colorTo: violet
+sdk: docker
+app_file: server.py
+pinned: false
+---
+
+
+
 # Supply Chain Disruption Dispatcher
 
 An OpenEnv-compliant reinforcement learning environment where an AI agent
@@ -116,3 +127,4 @@ python inference.py
 | `/reset` | POST | Start new episode |
 | `/step` | POST | Execute one action |
 | `/state` | GET | Current observation (no step advance) |
+
