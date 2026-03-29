@@ -1,16 +1,19 @@
-# Read the doc: https://huggingface.co/docs/hub/spaces-sdks-docker
-# you will also find guides on how best to write your Dockerfile
-
-FROM python:3.12
-
-RUN useradd -m -u 1000 user
-USER user
-ENV PATH="/home/user/.local/bin:$PATH"
+FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY --chown=user ./requirements.txt requirements.txt
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+# Install dependencies first (layer caching)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY --chown=user . /app
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
+# Copy source
+COPY . .
+
+# HuggingFace Spaces expects port 7860
+EXPOSE 7860
+
+# Health check for automated validation
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import requests; requests.get('http://localhost:7860/health').raise_for_status()"
+
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "7860"]
