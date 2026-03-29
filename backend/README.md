@@ -92,7 +92,7 @@ docker run -p 7860:7860 supply-chain-dispatcher
 
 ### Run Baseline
 ```bash
-export OPENAI_API_KEY=your-key-here
+export GEMINI_API_KEY=your-key-here
 export ENV_BASE_URL=http://localhost:7860
 python inference.py
 ```
@@ -104,6 +104,7 @@ python inference.py
 | Easy | gpt-4o-mini | TBD after run |
 | Medium | gpt-4o-mini | TBD after run |
 | Hard | gpt-4o-mini | TBD after run |
+
 
 *Run `python inference.py` locally and paste your scores here before submitting.*
 
