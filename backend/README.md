@@ -2,7 +2,7 @@
 title: Supply Chain Disruption Dispatcher
 emoji: 🚛
 colorFrom: blue
-colorTo: violet
+colorTo: indigo
 sdk: docker
 app_file: server.py
 pinned: false
