@@ -8,7 +8,7 @@ app_file: server.py
 pinned: false
 ---
 
-
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
 
 
 # Supply Chain Disruption Dispatcher
